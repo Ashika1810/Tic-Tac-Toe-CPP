@@ -1,0 +1,139 @@
+#include<iostream>
+using namespace std;
+main()
+{int turn,gridno,i,choice;
+char player1[15],player2[15];
+char grid[9];
+cout<<"\nThis is the basic format with grid numbers\n"<<endl;
+cout<<"      "<<"_1_"<<"|"<<"_2_"<<"|"<<"_3_"<<endl;
+cout<<"      "<<"_4_"<<"|"<<"_5_"<<"|"<<"_6_"<<endl;
+cout<<"      "<<" 7 "<<"|"<<" 8 "<<"|"<<" 9 "<<endl;
+cout<<"\nPlease enter the name of player 1:"<<endl;
+cin>>player1;
+cout<<"\nPlease enter the name of player 2:"<<endl;
+cin>>player2;
+for(i=0;i<9;i++)
+{
+	grid[i]=' ';
+}
+do{
+    gri1:
+	cout<<"\nPlayer 1's turn (SYMBOL-X)to choose a grid no.";
+	cin>>gridno;
+	    if((grid[gridno-1]==' '))
+		grid[gridno-1]='X';
+		else if(grid[gridno-1]!=' ')
+		{
+		cout<<"\nThis grid is already filled, please enter again!\n";
+		goto gri1;
+	    }
+cout<<"      "<<"_"<<grid[0]<<"_"<<"|"<<"_"<<grid[1]<<"_"<<"|"<<"_"<<grid[2]<<"_"<<endl;
+cout<<"      "<<"_"<<grid[3]<<"_"<<"|"<<"_"<<grid[4]<<"_"<<"|"<<"_"<<grid[5]<<"_"<<endl;
+cout<<"      "<<" "<<grid[6]<<" "<<"|"<<" "<<grid[7]<<" "<<"|"<<" "<<grid[8]<<" "<<endl;
+for(i=0;i<3;i++)
+    {
+	if((grid[i]=='X')&&(grid[i+3]=='X')&&(grid[i+6]=='X'))
+	{
+		cout<<"\n"<<player1<<" wins the game!";
+		exit(1);
+	}
+	if(i==0)
+	{
+		if((grid[0]=='X')&&(grid[4]=='X')&&(grid[8]=='X'))
+	{
+		cout<<"\n"<<player1<<" wins the game";
+		exit(1);
+	}
+	}
+	if(i==2)
+	{
+		if((grid[2]=='X')&&(grid[4]=='X')&&(grid[6]=='X'))
+	{
+		cout<<"\n"<<player1<<" wins the game!";
+		exit(1);
+	}
+	}
+    }
+    for(i=0;i<7;i=i+3)
+    {
+	if((grid[i]=='X')&&(grid[i+1]=='X')&&(grid[i+2]=='X'))
+	{
+		cout<<"\n"<<player1<<" 1 wins the game!";
+		exit(1);
+	}
+    }
+    for(i=0;i<9;i++)
+	{
+		if(grid[i]==' ')
+		{
+	    choice=1;
+		break;
+	   }
+	   else 
+	   {
+	   choice=0;
+	}
+    }
+	if(i==9)
+	goto gri3;
+	gri2:
+	    cout<<"\nPlayer 2's turn (SYMBOL-O) to choose a grid no.";
+	    cin>>gridno;
+	    if((grid[gridno-1]==' '))
+		grid[gridno-1]='O';
+		else if(grid[gridno-1]!=' ')
+		{
+		cout<<"\nThis grid is already filled, please enter again!\n";
+		goto gri2;
+	    }
+cout<<"      "<<"_"<<grid[0]<<"_"<<"|"<<"_"<<grid[1]<<"_"<<"|"<<"_"<<grid[2]<<"_"<<endl;
+cout<<"      "<<"_"<<grid[3]<<"_"<<"|"<<"_"<<grid[4]<<"_"<<"|"<<"_"<<grid[5]<<"_"<<endl;
+cout<<"      "<<" "<<grid[6]<<" "<<"|"<<" "<<grid[7]<<" "<<"|"<<" "<<grid[8]<<" "<<endl;
+for(i=0;i<3;i++)
+    {
+	if((grid[i]=='O')&&(grid[i+3]=='O')&&(grid[i+6]=='O'))
+	{
+		cout<<"\n"<<player2<<" wins the game!";
+		exit(1);
+	}
+	if(i==0)
+	{
+		if((grid[0]=='O')&&(grid[4]=='O')&&(grid[8]=='O'))
+	{
+		cout<<"\n"<<player2<<" wins the game!";
+		exit(1);
+	}
+	}
+	if(i==2)
+	{
+		if((grid[2]=='O')&&(grid[4]=='O')&&(grid[6]=='O'))
+	{
+		cout<<"\n"<<player2<<" wins the game!";
+		exit(1);
+	}
+	}
+    }
+    for(i=0;i<7;i=i+3)
+    {
+	if((grid[i]=='O')&&(grid[i+1]=='O')&&(grid[i+2]=='O'))
+	{
+		cout<<"\n"<<player2<<" wins the game!";
+		exit(1);
+	}
+    }
+	for(i=0;i<9;i++)
+	{
+		if(grid[i]==' ')
+		{
+	    choice=1;
+		break;
+	   }
+	   else 
+	   choice=0;
+	}
+	gri3:cout<<"";
+}while(choice);
+cout<<"\nIt's a draw game!";
+}
+
+
